@@ -50,6 +50,7 @@ func _physics_process(delta):
 		velocity = velocity.normalized() * speed
 		$AnimatedSprite.play()
 	else:
+		$AnimatedSprite.set_frame(0)
 		$AnimatedSprite.stop()
 	
 	# flips the character when it is walking
