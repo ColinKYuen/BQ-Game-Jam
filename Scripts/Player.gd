@@ -45,3 +45,4 @@ func _physics_process(delta):
 		position.x = max_right
 	elif position.x < player_width:
 		position.x = player_width
+
