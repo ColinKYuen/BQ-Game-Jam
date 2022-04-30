@@ -56,6 +56,17 @@ func _on_StartButton_pressed():
 func _on_MessageTimer_timeout():
 	$Message.hide()
 
+func _on_HUD_special_fruit():
+	# logic: special fruit also gives scores that a normal fruit would
+	lives = min(3, lives + 1)
+	print("current lives: " + str(lives))
+	match (lives):
+		3: 
+			$Life1.set_frame(0)
+		2:
+			$Life2.set_frame(0)
+	_on_HUD_fruit_collected()
+
 func _on_HUD_fruit_collected():
 	print("current score: " + str(int($Score.text) + 1))
 	$Score.text = str(int($Score.text) + 1)
