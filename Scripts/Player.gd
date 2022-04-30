@@ -27,6 +27,7 @@ func new_game():
 
 func _physics_process(delta):
 	if not is_game_started:
+		$AnimatedSprite.stop()
 		return
 
 	var velocity = Vector2.ZERO # The player's movement vector.
@@ -49,6 +50,7 @@ func _physics_process(delta):
 		velocity = velocity.normalized() * speed
 		$AnimatedSprite.play()
 	else:
+		$AnimatedSprite.set_frame(0)
 		$AnimatedSprite.stop()
 	
 	# flips the character when it is walking
