@@ -17,9 +17,6 @@ var window_width = OS.get_window_size().x
 var timer = 0
 var score
 
-func _ready():
-	new_game()
-
 func new_game():
 
 	rng.randomize()
