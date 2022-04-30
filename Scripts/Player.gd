@@ -1,7 +1,11 @@
-extends KinematicBody2D
+extends KinematicBody2D # -AL- tutorial says Area2D, but others
+# have this instead, so it should work?
+
+var window_width = OS.get_window_size().x
 
 var speed : int = 300
 var lives : int = 3
+var screen_size
 
 const dash_double_tap_within: float = 0.85
 const dash_duration: float = 0.3
@@ -14,20 +18,86 @@ var dash_cooldown: float = 2
 var dash_on_cooldown: bool = false
 var last_tap_right: bool = false
 
+func _ready():
+	screen_size = get_viewport_rect().size
+
+#func _physics_process(delta):
+#	var velocity = Vector2.ZERO # The player's movement vector.
+#
+#	if Input.is_action_pressed("move_right"):
+#		velocity.x += 3
+#		position.x += speed * delta
+#	if Input.is_action_pressed("move_left"):
+#		velocity.x -= 3
+#		position.x -= speed * delta
+#
+#	if velocity.length() > 0:
+#		velocity = velocity.normalized() * speed
+#		$AnimatedSprite.play()
+#	else:
+#		$AnimatedSprite.stop()
+#
+#	# position.x = clamp(position.x, 0, screen_size.x)
+#
+#	# flips the character when it is walking
+#	# the rabbit character is symmetric, so the flipping cannot be 
+#	# detected by eye, but if we decide to have another character
+#	# that is not symmetric, the flipping should be more obvious. 
+#	if velocity.x != 0:
+#		$AnimatedSprite.animation = "walk"
+#		$AnimatedSprite.flip_v = false
+#		$AnimatedSprite.flip_h = velocity.x < 0
+#
+#	var player_width = get_node("Hitbox").get_shape().get_extents().x
+#	var max_right = window_width - player_width
+#
+#	if position.x > max_right:
+#		position.x = max_right
+#	elif position.x < player_width:
+#		position.x = player_width
+
 func _physics_process(delta):
+	var velocity = Vector2.ZERO # The player's movement vector.
 	check_dash(delta)
 
 	if is_dashing:
 		if last_tap_right:
 			position.x += speed * delta
+			
 		else:
 			position.x -= speed * delta
 	else:
 		if Input.is_action_pressed("move_right"):
 			position.x += speed * delta
+			velocity.x += 3
 		if Input.is_action_pressed("move_left"):
 			position.x -= speed * delta
+			velocity.x -= 3
+	if velocity.length() > 0:
+		velocity = velocity.normalized() * speed
+		$AnimatedSprite.play()
+	else:
+		$AnimatedSprite.stop()
 
+	# position.x = clamp(position.x, 0, screen_size.x)
+	
+	# flips the character when it is walking
+	# the rabbit character is symmetric, so the flipping cannot be 
+	# detected by eye, but if we decide to have another character
+	# that is not symmetric, the flipping should be more obvious. 
+	if velocity.x != 0:
+		$AnimatedSprite.animation = "walk"
+		$AnimatedSprite.flip_v = false
+		$AnimatedSprite.flip_h = velocity.x < 0
+	
+	var player_width = get_node("Hitbox").get_shape().get_extents().x
+	var max_right = window_width - player_width
+	
+	if position.x > max_right:
+		position.x = max_right
+	elif position.x < player_width:
+		position.x = player_width
+		
 func check_dash(delta):
 	if dash_on_cooldown:
 		dash_timer += delta
