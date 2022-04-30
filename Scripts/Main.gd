@@ -78,5 +78,7 @@ func spawn(location: float, speed: float, fruit_chance: float):
 		
 func game_over():
 	is_game_started = false
+	$Player.is_game_started = false
+	$Player.position.x = window_width / 2
 	fruit_container.queue_free()
 	$HUD.show_game_over()
