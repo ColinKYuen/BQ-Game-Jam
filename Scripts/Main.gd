@@ -39,7 +39,6 @@ func _process(delta):
 			spawn(rng.randf_range(0, window_width), rng.randf_range(100, 500), rng.randf_range(1, 100))
 
 func spawn(location: float, speed: float, fruit_chance: float):
-	#TODO: fix array index 0 throwing error 
 	var spawn_fruit
 	if fruit_chance <= special_fruit_chance:
 	# logic: if fruit_chance <= special_fruit_chance,
