@@ -2,12 +2,27 @@ extends CanvasLayer
 
 signal start_game
 
-var score = 0;
-var lives = 3;
+var highscore:int = 0
+var score:int = 0;
+var lives:int = 3;
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	load_highscore()
+	$Highscore.text = ("Highscore\n" + str(highscore))
 	pass
+
+func save_highscore():
+	var file = File.new()
+	file.open("user://save_game.dat", File.WRITE)
+	file.store_64(highscore)
+	file.close()
+
+func load_highscore():
+	var file = File.new()
+	file.open("user://save_game.dat", File.READ)
+	highscore = file.get_64()
+	file.close()
 
 func show_message(text):
 	$Message.text = text
@@ -18,6 +33,8 @@ func _on_StartButton_pressed():
 	print("start pressed")
 	$StartButton.hide()
 	$Message.hide()
+	$Highscore.hide()
+	$Score.show()
 	emit_signal("start_game")
 
 func _on_MessageTimer_timeout():
@@ -27,13 +44,20 @@ func _on_HUD_fruit_collected():
 	print("current score: " + str(int($Score.text) + 1))
 	$Score.text = str(int($Score.text) + 1)
 	score = int($Score.text) + 1
+	if score > highscore:
+		highscore = score
 
 func _on_HUD_fruit_hit():
-	print("current lives: " + str(lives - 1))
-	if lives > 1:
-		$Life1.set_frame(1)
-	elif lives > 0:
-		$Life2.set_frame(1)
-	else:
-		$Life3.set_frame(1)
-	lives = lives - 1
+	lives -= 1
+	print("current lives: " + str(lives))
+	match (lives):
+		2:
+			$Life1.set_frame(1)
+		1:
+			$Life2.set_frame(1)
+		_:
+			# Gameover
+			$Life3.set_frame(1)
+			save_highscore()
+			print("Gameover")
+			pass
