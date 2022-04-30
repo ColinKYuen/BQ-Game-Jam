@@ -8,7 +8,7 @@ signal start_game
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	get_parent().get_node("GoodFruit").connect("fruit_collected", self, "_on_HUD_fruit_collected")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
@@ -27,3 +27,7 @@ func _on_StartButton_pressed():
 
 func _on_MessageTimer_timeout():
 	$Message.hide()
+
+func _on_HUD_fruit_collected():
+	print("current score: " + str(int($Score.text) + 1))
+	$Score.text = str(int($Score.text) + 1)
