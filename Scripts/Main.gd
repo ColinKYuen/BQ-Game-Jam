@@ -17,9 +17,6 @@ var window_width = OS.get_window_size().x
 var timer = 0
 var score
 
-func _ready():
-	new_game()
-
 func new_game():
 	shapes=[obj_fruit1,obj_fruit2,obj_fruit3,obj_fruit4,obj_fruit5,obj_fruit6,obj_fruit7]
 	rnd.randomize()
