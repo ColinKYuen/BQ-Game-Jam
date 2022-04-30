@@ -18,9 +18,13 @@ var timer = 0
 var bad_fruit_chance = 5
 
 var is_game_started: bool = false
+var fruit_container
 
 func new_game():
 	is_game_started = true
+	fruit_container = Node2D.new()
+	fruit_container.name = "fruit_container"
+	get_parent().add_child(fruit_container)
 
 func _process(delta):
 	if is_game_started:
@@ -44,7 +48,7 @@ func spawn(location: float, speed: float, fruit_chance: float):
 	
 	spawn_fruit.velocity = Vector2(0, speed)
 	spawn_fruit.position = self.position + Vector2(spawn_location, 0)
-	get_parent().add_child(spawn_fruit)
+	get_parent().get_node("fruit_container").add_child(spawn_fruit)
 	
 	if fruit_chance > bad_fruit_chance:
 		spawn_fruit.connect("fruit_collected", $HUD, "_on_HUD_fruit_collected")
@@ -52,4 +56,6 @@ func spawn(location: float, speed: float, fruit_chance: float):
 		spawn_fruit.connect("fruit_hit", $HUD, "_on_HUD_fruit_hit")
 
 func game_over():
+	is_game_started = false
+	fruit_container.queue_free()
 	$HUD.show_game_over()
