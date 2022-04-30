@@ -1,7 +1,5 @@
 extends KinematicBody2D
 
-
-
 var speed : int = 300
 var lives : int = 3
 
@@ -18,18 +16,17 @@ var last_tap_right: bool = false
 
 func _physics_process(delta):
 	check_dash(delta)
-	
+
 	if is_dashing:
 		if last_tap_right:
 			position.x += speed * delta
 		else:
 			position.x -= speed * delta
 	else:
-		if Input.is_action_pressed("move_left"):
-			position.x -= speed * delta
-			
 		if Input.is_action_pressed("move_right"):
 			position.x += speed * delta
+		if Input.is_action_pressed("move_left"):
+			position.x -= speed * delta
 
 func check_dash(delta):
 	if dash_on_cooldown:
@@ -39,7 +36,7 @@ func check_dash(delta):
 		else:
 			dash_timer = 0
 			dash_on_cooldown = false
-		
+
 	if Input.is_action_just_pressed("move_right") and not is_dashing:
 		if last_tap_right:
 			dash_taps += 1
@@ -64,7 +61,7 @@ func check_dash(delta):
 		dash_timer = 0
 		dash_taps = 0
 		speed = dash_speed
-		
+
 	if is_dashing:
 		dash_timer += delta
 		if dash_timer >= dash_duration:
@@ -72,4 +69,3 @@ func check_dash(delta):
 			dash_timer = 0
 			speed = norm_speed
 			dash_on_cooldown = true
-
