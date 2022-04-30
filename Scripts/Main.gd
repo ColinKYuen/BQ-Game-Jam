@@ -1,19 +1,18 @@
 extends Node2D
 
-const obj_fruit1 = preload("res://Scenes/Fruit1.tscn")
-const obj_fruit2 =  preload("res://Scenes/Fruit2.tscn")
-const obj_fruit3 = preload("res://Scenes/Fruit3.tscn")
-const obj_fruit4 =  preload("res://Scenes/Fruit4.tscn")
-const obj_fruit5 =  preload("res://Scenes/Fruit5.tscn")
-const obj_fruit6 =  preload("res://Scenes/Fruit6.tscn")
-const obj_fruit7 =  preload("res://Scenes/Fruit7.tscn")
-var shapes =[]
-const obj_good_fruit = preload("res://Scenes/GoodFruit.tscn")
+const good_fruits = [
+	preload("res://Scenes/Fruits/Banana.tscn"),
+	preload("res://Scenes/Fruits/Cherry.tscn"),
+	preload("res://Scenes/Fruits/DragonFruit.tscn"),
+	preload("res://Scenes/Fruits/Eggplant.tscn"),
+	preload("res://Scenes/Fruits/Lemon.tscn"),
+	preload("res://Scenes/Fruits/Peach.tscn"),
+	preload("res://Scenes/Fruits/Strawberry.tscn")
+]
 const obj_bad_fruit = preload("res://Scenes/BadFruit.tscn")
 const obj_special_fruit = preload("res://Scenes/SpecialFruit.tscn")
+
 var rng = RandomNumberGenerator.new()
-var rnd = RandomNumberGenerator.new()
-var shape_index:int  = 1
 
 var window_width = OS.get_window_size().x
 var timer = 0
@@ -26,7 +25,6 @@ var is_game_started: bool = false
 
 func new_game():
 	is_game_started = true
-	shapes=[obj_fruit1,obj_fruit2,obj_fruit3,obj_fruit4,obj_fruit5,obj_fruit6,obj_fruit7]
 
 func _process(delta):
 	if is_game_started:
@@ -47,25 +45,25 @@ func spawn(location: float, speed: float, fruit_chance: float):
 	elif fruit_chance > bad_fruit_chance:
 	# logic: if fruit_chance > bad_fruit_chance,
 	# then produce normal fruit
-		shape_index = rnd.randi_range(1,6)
-		fruit = shapes[shape_index].instance()
+		var good_fruit_index = rng.randi_range(0, good_fruits.size() - 1)
+		spawn_fruit = good_fruits[good_fruit_index].instance()
 	else:
 	# logic: if fruit_chance <= bad_fruit_chance,
 	# then produce bad fruit
-		fruit = obj_bad_fruit.instance()
-		fruit.set_bad_fruit();
+		spawn_fruit = obj_bad_fruit.instance()
+		spawn_fruit.set_bad_fruit();
 
-	var fruit_size = fruit.get_node("Hitbox").get_viewport_rect().size.x
+	var fruit_size = spawn_fruit.get_node("Hitbox").get_viewport_rect().size.x
 	var spawn_location = min(max(fruit_size, location), (window_width - fruit_size))
 	
-	fruit.velocity = Vector2(0, speed)
-	fruit.position = self.position + Vector2(spawn_location, 0)
-	get_parent().add_child(fruit)
+	spawn_fruit.velocity = Vector2(0, speed)
+	spawn_fruit.position = self.position + Vector2(spawn_location, 0)
+	get_parent().add_child(spawn_fruit)
 	
 	if fruit_chance > bad_fruit_chance:
-		fruit.connect("fruit_collected", $HUD, "_on_HUD_fruit_collected")
+		spawn_fruit.connect("fruit_collected", $HUD, "_on_HUD_fruit_collected")
 	else:
-		fruit.connect("fruit_hit", $HUD, "_on_HUD_fruit_hit")
+		spawn_fruit.connect("fruit_hit", $HUD, "_on_HUD_fruit_hit")
 
 func game_over():
 	$HUD.show_game_over()
