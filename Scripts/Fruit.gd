@@ -2,6 +2,7 @@ extends Area2D
 
 signal fruit_collected
 signal fruit_hit
+signal special_fruit
 
 var duration: int = 1000
 var velocity
@@ -21,7 +22,7 @@ func _on_body_entered(body):
 	if body.is_in_group("Player"):
 		if is_special_fruit:
 			print("Special fruit collected")
-			emit_signal("special_fruit_collected")
+			emit_signal("special_fruit")
 		if is_good_fruit:
 			print("Fruit collected")
 			emit_signal("fruit_collected")
@@ -37,3 +38,4 @@ func set_bad_fruit():
 
 func set_special_fruit():
 	self.is_special_fruit = true
+	

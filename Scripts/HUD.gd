@@ -40,9 +40,25 @@ func _on_StartButton_pressed():
 func _on_MessageTimer_timeout():
 	$Message.hide()
 
-func _on_HUD_special_fruit_collected():
-	print("current lives: " + str(lives + 1))
-	lives = lives + 1
+func _match_lives(lives):
+	match (lives):
+		2:
+			$Life1.set_frame(1)
+		1:
+			$Life2.set_frame(1)
+		_:
+			# Gameover
+			$Life3.set_frame(1)
+			save_highscore()
+			print("Gameover")
+			pass	
+
+func _on_HUD_special_fruit():
+	# logic: special fruit also gives scores that a normal fruit would
+	lives += 1
+	print("current lives: " + str(lives))
+	_match_lives(lives)
+	_on_HUD_fruit_collected()
 
 func _on_HUD_fruit_collected():
 	print("current score: " + str(int($Score.text) + 1))
@@ -54,14 +70,4 @@ func _on_HUD_fruit_collected():
 func _on_HUD_fruit_hit():
 	lives -= 1
 	print("current lives: " + str(lives))
-	match (lives):
-		2:
-			$Life1.set_frame(1)
-		1:
-			$Life2.set_frame(1)
-		_:
-			# Gameover
-			$Life3.set_frame(1)
-			save_highscore()
-			print("Gameover")
-			pass
+	_match_lives(lives)

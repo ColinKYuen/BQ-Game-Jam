@@ -63,7 +63,7 @@ func spawn(location: float, speed: float, fruit_chance: float):
 	if fruit_chance <= special_fruit_chance:
 	# logic: if fruit_chance <= special_fruit_chance,
 	# then produce special fruit
-		spawn_fruit.connect("special_fruit_collected", $HUD, "_on_HUD_special_fruit_collected")
+		spawn_fruit.connect("special_fruit", $HUD, "_on_HUD_special_fruit")
 	elif fruit_chance > bad_fruit_chance:
 	# logic: if fruit_chance > bad_fruit_chance,
 	# then produce normal fruit
