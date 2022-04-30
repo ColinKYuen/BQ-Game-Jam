@@ -1,6 +1,5 @@
 extends Node2D
 
-
 const obj_fruit1 = preload("res://Scenes/Fruit1.tscn")
 const obj_fruit2 =  preload("res://Scenes/Fruit2.tscn")
 const obj_fruit3 = preload("res://Scenes/Fruit3.tscn")
@@ -9,6 +8,8 @@ const obj_fruit5 =  preload("res://Scenes/Fruit5.tscn")
 const obj_fruit6 =  preload("res://Scenes/Fruit6.tscn")
 const obj_fruit7 =  preload("res://Scenes/Fruit7.tscn")
 var shapes =[]
+const obj_good_fruit = preload("res://Scenes/GoodFruit.tscn")
+const obj_bad_fruit = preload("res://Scenes/BadFruit.tscn")
 var rng = RandomNumberGenerator.new()
 var rnd = RandomNumberGenerator.new()
 var shape_index:int  = 1

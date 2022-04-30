@@ -1,11 +1,30 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://fonts/Xolonium-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Scripts/HUD.gd" type="Script" id=2]
+[ext_resource path="res://art/Pixel Heart Sprite Sheet 32x32.png" type="Texture" id=3]
 
 [sub_resource type="DynamicFont" id=1]
 size = 64
 font_data = ExtResource( 1 )
+
+[sub_resource type="AtlasTexture" id=2]
+flags = 4
+atlas = ExtResource( 3 )
+region = Rect2( 0, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=3]
+flags = 4
+atlas = ExtResource( 3 )
+region = Rect2( 64, 0, 32, 32 )
+
+[sub_resource type="SpriteFrames" id=4]
+animations = [ {
+"frames": [ SubResource( 2 ), SubResource( 3 ) ],
+"loop": true,
+"name": "get_hit",
+"speed": 5.0
+} ]
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource( 2 )
@@ -47,6 +66,21 @@ autowrap = true
 [node name="MessageTimer" type="Timer" parent="."]
 wait_time = 2.0
 one_shot = true
+
+[node name="Life1" type="AnimatedSprite" parent="."]
+position = Vector2( 968, 48 )
+frames = SubResource( 4 )
+animation = "get_hit"
+
+[node name="Life2" type="AnimatedSprite" parent="."]
+position = Vector2( 920, 48 )
+frames = SubResource( 4 )
+animation = "get_hit"
+
+[node name="Life3" type="AnimatedSprite" parent="."]
+position = Vector2( 872, 48 )
+frames = SubResource( 4 )
+animation = "get_hit"
 
 [connection signal="pressed" from="StartButton" to="." method="_on_StartButton_pressed"]
 [connection signal="timeout" from="MessageTimer" to="." method="_on_MessageTimer_timeout"]
