@@ -2,15 +2,15 @@ extends Node2D
 
 const obj_good_fruit = preload("res://Scenes/GoodFruit.tscn")
 const obj_bad_fruit = preload("res://Scenes/BadFruit.tscn")
-const base_fruit_speed = 100
-const base_bad_fruit = 5
+const base_fruit_speed:int = 100
+const base_bad_fruit:int = 5
 
 var rng = RandomNumberGenerator.new()
 
 var window_width = OS.get_window_size().x
-var timer = 0
-var bad_fruit_chance = 5
-var num_good_fruits = 6
+var timer:float = 0
+var bad_fruit_chance:int = 5
+var num_good_fruits:int = 6
 var spawn_timer:float = 0.0
 const base_spawn_delay:int = 1
 
@@ -27,6 +27,7 @@ func _process(delta):
 	if is_game_started:
 		spawn_timer += delta
 		if spawn_timer > base_spawn_delay / ((100 + $HUD.score) * 0.01):
+			$Player.speed = 300 + ($HUD.score * 10)
 			rng.randomize()
 			spawn_timer = 0
 			spawn(rng.randf_range(0, window_width), rng.randf_range(base_fruit_speed + ($HUD.score * 10), base_fruit_speed + ($HUD.score * 20)), rng.randf_range(0, 100))

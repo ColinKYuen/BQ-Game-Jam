@@ -9,8 +9,8 @@ var screen_size
 
 const dash_double_tap_within: float = 0.85
 const dash_duration: float = 0.3
-const dash_speed: int = 900
-const norm_speed: int = 300
+const dash_speed_mult: int = 3
+var norm_speed: int = 300
 var is_dashing: bool = false
 var dash_timer: float = 0
 var dash_taps: int = 0
@@ -103,7 +103,7 @@ func check_dash(delta):
 		is_dashing = true
 		dash_timer = 0
 		dash_taps = 0
-		speed = dash_speed
+		speed = norm_speed * dash_speed_mult
 
 	if is_dashing:
 		dash_timer += delta
