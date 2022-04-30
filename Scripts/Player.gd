@@ -35,8 +35,10 @@ func check_dash(delta):
 	if dash_on_cooldown:
 		dash_timer += delta
 		if dash_timer <= dash_cooldown:
+			print("Dash on CD")
 			return
 		else:
+			print("Dash off CD")
 			dash_timer = 0
 			dash_on_cooldown = false
 		
@@ -45,11 +47,13 @@ func check_dash(delta):
 			dash_taps += 1
 		else:
 			dash_taps = 1
+		last_tap_right = true
 	if Input.is_action_just_pressed("move_left") and not is_dashing:
 		if not last_tap_right:
 			dash_taps += 1
 		else:
 			dash_taps = 1
+		last_tap_right = false
 
 	if dash_taps > 0 and not is_dashing:
 		dash_timer += delta
