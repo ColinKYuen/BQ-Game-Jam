@@ -12,7 +12,7 @@ var timer = 0
 var bad_fruit_chance = 5
 var num_good_fruits = 6
 var spawn_timer:float = 0.0
-const base_spawn_delay = 1
+const base_spawn_delay:int = 1
 
 var is_game_started: bool = false
 var fruit_container
