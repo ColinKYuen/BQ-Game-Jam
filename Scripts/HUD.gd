@@ -1,6 +1,7 @@
 extends CanvasLayer
 
 signal start_game
+signal end_game
 
 var highscore:int = 0
 var score:int = 0;
@@ -10,6 +11,7 @@ var lives:int = 3;
 func _ready():
 	load_highscore()
 	$Highscore.text = ("Highscore\n" + str(highscore))
+	connect("end_game", get_parent(), "game_over")
 	pass
 
 func save_highscore():
@@ -29,8 +31,22 @@ func show_message(text):
 	$Message.show()
 	$MessageTimer.start()
 
+func show_game_over():
+	$Message.text = "GAME OVER"
+	$Message.show()
+	$StartButton.show()
+
+func reset_HUD():
+	score = 0
+	lives = 3
+	$Life1.set_frame(0)
+	$Life2.set_frame(0)
+	$Life3.set_frame(0)
+	$Score.text = "0"
+
 func _on_StartButton_pressed():
 	print("start pressed")
+	reset_HUD()
 	$StartButton.hide()
 	$Message.hide()
 	$Highscore.hide()
@@ -70,5 +86,6 @@ func _on_HUD_fruit_hit():
 			# Gameover
 			$Life3.set_frame(1)
 			save_highscore()
+			emit_signal("end_game")
 			print("Gameover")
-			pass	
+			pass
