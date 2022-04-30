@@ -28,5 +28,8 @@ func _on_body_entered(body):
 			pass
 	queue_free()
 
+func set_good_fruit(good_fruit_type: int):
+	$AnimatedSprite.set_frame(good_fruit_type)
+	
 func set_bad_fruit():
 	self.is_good_fruit = false
