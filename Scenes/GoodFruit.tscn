@@ -4,7 +4,7 @@
 [ext_resource path="res://art/Fruit+.png" type="Texture" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 8.3125, 32 )
+extents = Vector2( 6, 24 )
 
 [sub_resource type="AtlasTexture" id=2]
 flags = 4
