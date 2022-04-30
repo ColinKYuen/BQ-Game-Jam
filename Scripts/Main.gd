@@ -24,7 +24,7 @@ func new_game():
 	shapes=[obj_fruit1,obj_fruit2,obj_fruit3,obj_fruit4,obj_fruit5,obj_fruit6,obj_fruit7]
 	rnd.randomize()
 	rng.randomize()
-	spawn(rng.randf_range(64, window_width - 64), rng.randf_range(100, 500))
+
 	
 func _process(delta):
 
