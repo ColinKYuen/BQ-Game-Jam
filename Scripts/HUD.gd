@@ -6,13 +6,14 @@ signal end_game
 var highscore:int = 0
 var score:int = 0;
 var lives:int = 3;
+var fruits;
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	load_highscore()
 	$Highscore.text = ("Highscore\n" + str(highscore))
 	connect("end_game", get_parent(), "game_over")
-	pass
+	fruits = [$Banana, $Cherry, $Eggplant, $Lemon, $Peach, $Strawberry, $DragonFruit]
 
 func save_highscore():
 	var file = File.new()
@@ -51,6 +52,8 @@ func _on_StartButton_pressed():
 	$Message.hide()
 	$Highscore.hide()
 	$Score.show()
+	for fruit in fruits:
+		fruit.hide()
 	emit_signal("start_game")
 
 func _on_MessageTimer_timeout():
