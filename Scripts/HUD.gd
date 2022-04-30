@@ -23,6 +23,10 @@ func _on_StartButton_pressed():
 func _on_MessageTimer_timeout():
 	$Message.hide()
 
+func _on_HUD_special_fruit_collected():
+	print("current lives: " + str(lives + 1))
+	lives = lives + 1
+
 func _on_HUD_fruit_collected():
 	print("current score: " + str(int($Score.text) + 1))
 	$Score.text = str(int($Score.text) + 1)

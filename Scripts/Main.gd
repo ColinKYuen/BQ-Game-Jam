@@ -36,12 +36,12 @@ func _process(delta):
 
 func spawn(location: float, speed: float, fruit_chance: float):
 	#TODO: fix array index 0 throwing error 
-	var fruit
+	var spawn_fruit
 	if fruit_chance <= special_fruit_chance:
 	# logic: if fruit_chance <= special_fruit_chance,
 	# then produce special fruit
-		fruit = obj_special_fruit.instance()
-		fruit.set_special_fruit();
+		spawn_fruit = obj_special_fruit.instance()
+		spawn_fruit.set_special_fruit();
 	elif fruit_chance > bad_fruit_chance:
 	# logic: if fruit_chance > bad_fruit_chance,
 	# then produce normal fruit
@@ -60,10 +60,18 @@ func spawn(location: float, speed: float, fruit_chance: float):
 	spawn_fruit.position = self.position + Vector2(spawn_location, 0)
 	get_parent().add_child(spawn_fruit)
 	
-	if fruit_chance > bad_fruit_chance:
+	if fruit_chance <= special_fruit_chance:
+	# logic: if fruit_chance <= special_fruit_chance,
+	# then produce special fruit
+		spawn_fruit.connect("special_fruit_collected", $HUD, "_on_HUD_special_fruit_collected")
+	elif fruit_chance > bad_fruit_chance:
+	# logic: if fruit_chance > bad_fruit_chance,
+	# then produce normal fruit
 		spawn_fruit.connect("fruit_collected", $HUD, "_on_HUD_fruit_collected")
 	else:
+	# logic: if fruit_chance <= bad_fruit_chance,
+	# then produce bad fruit
 		spawn_fruit.connect("fruit_hit", $HUD, "_on_HUD_fruit_hit")
-
+		
 func game_over():
 	$HUD.show_game_over()
