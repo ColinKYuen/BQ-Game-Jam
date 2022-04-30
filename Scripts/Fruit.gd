@@ -4,7 +4,7 @@ signal fruit_collected
 signal fruit_hit
 
 var duration: int = 1000
-var velocity: Vector2 = Vector2(0, 0)
+var velocity
 var is_good_fruit: bool = true # Can be set on obj init
 
 func _ready():
