@@ -20,7 +20,9 @@ func show_message(text):
 	$MessageTimer.start()
 
 func _on_StartButton_pressed():
+	print("start pressed")
 	$StartButton.hide()
+	$Message.hide()
 	emit_signal("start_game")
 
 func _on_MessageTimer_timeout():

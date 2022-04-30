@@ -10,8 +10,7 @@ func _ready():
 	new_game()
 
 func new_game():
-	$HUD.show_message("Get Ready")
-	
+
 	rng.randomize()
 	spawn(rng.randf_range(64, window_width - 64), rng.randf_range(100, 500))
 	
