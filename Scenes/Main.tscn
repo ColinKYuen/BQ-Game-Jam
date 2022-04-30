@@ -36,12 +36,6 @@ script = ExtResource( 2 )
 position = Vector2( 960, 925 )
 z_index = 1
 
-[node name="AnimatedSprite" type="AnimatedSprite" parent="Player"]
-position = Vector2( 0, 1 )
-scale = Vector2( 2, 2 )
-frames = SubResource( 1 )
-animation = "walk"
-
 [node name="HUD" parent="." instance=ExtResource( 3 )]
 
 [node name="Background" type="Sprite" parent="."]
