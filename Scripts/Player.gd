@@ -1,4 +1,5 @@
-extends KinematicBody2D
+extends KinematicBody2D # -AL- tutorial says Area2D, but others
+# have this instead, so it should work?
 
 var speed : int = 500
 var screen_size
@@ -24,3 +25,12 @@ func _physics_process(delta):
 		$AnimatedSprite.stop()
 
 	position.x = clamp(position.x, 0, screen_size.x)
+	
+	# flips the character when it is walking
+	# the rabbit character is symmetric, so the flipping cannot be 
+	# detected by eye, but if we decide to have another character
+	# that is not symmetric, the flipping should be more obvious. 
+	if velocity.x != 0:
+		$AnimatedSprite.animation = "walk"
+		$AnimatedSprite.flip_v = false
+		$AnimatedSprite.flip_h = velocity.x < 0
