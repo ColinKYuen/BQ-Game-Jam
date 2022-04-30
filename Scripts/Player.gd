@@ -18,8 +18,13 @@ var dash_cooldown: float = 2
 var dash_on_cooldown: bool = false
 var last_tap_right: bool = false
 
+var is_game_started: bool = false
+
 func _ready():
 	screen_size = get_viewport_rect().size
+
+func new_game():
+	is_game_started = true
 
 #func _physics_process(delta):
 #	var velocity = Vector2.ZERO # The player's movement vector.
@@ -57,6 +62,9 @@ func _ready():
 #		position.x = player_width
 
 func _physics_process(delta):
+	if not is_game_started:
+		return
+
 	var velocity = Vector2.ZERO # The player's movement vector.
 	check_dash(delta)
 
