@@ -36,7 +36,7 @@ height = 10.0
 script = ExtResource( 2 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 444, 325 )
+position = Vector2( 950, 900 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Player"]
 position = Vector2( 0, 1 )
@@ -45,7 +45,6 @@ frames = SubResource( 1 )
 animation = "walk"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
-position = Vector2( 405, 306 )
 shape = SubResource( 4 )
 
 [node name="HUD" parent="." instance=ExtResource( 3 )]
