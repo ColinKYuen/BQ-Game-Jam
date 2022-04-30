@@ -35,10 +35,8 @@ func check_dash(delta):
 	if dash_on_cooldown:
 		dash_timer += delta
 		if dash_timer <= dash_cooldown:
-			print("Dash on CD")
 			return
 		else:
-			print("Dash off CD")
 			dash_timer = 0
 			dash_on_cooldown = false
 		
