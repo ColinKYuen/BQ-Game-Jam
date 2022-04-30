@@ -32,12 +32,19 @@ func _process(delta):
 			timer = 0
 			spawn(rng.randf_range(0, window_width), rng.randf_range(100, 500))
 
-func spawn(location: float, speed: float):
+func spawn(location: float, speed: float, fruit_chance: float):
 	#TODO: fix array index 0 throwing error 
-	shape_index = rnd.randi_range(1,6)
-	var fruit = shapes[shape_index].instance()
+	var fruit
+	if fruit_chance > 5:
+		shape_index = rnd.randi_range(1,6)
+		fruit = shapes[shape_index].instance()
+	else:
+		fruit = obj_bad_fruit.instance()
+		fruit.set_bad_fruit();
+
 	var fruit_size = fruit.get_node("Hitbox").get_viewport_rect().size.x
 	var spawn_location = min(max(fruit_size, location), (window_width - fruit_size))
+	
 	fruit.velocity = Vector2(0, speed)
 	fruit.position = self.position + Vector2(spawn_location, 0)
 	get_parent().add_child(fruit)
