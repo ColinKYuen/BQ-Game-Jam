@@ -16,7 +16,7 @@ var rng = RandomNumberGenerator.new()
 
 var window_width = OS.get_window_size().x
 var timer = 0
-var bad_fruit_chance = 5
+var bad_fruit_chance = 10 
 # TODO make special fruit chance higher depending on player.lives
 # i.e., something like: special_fruit_chance = max(1, (3 - lives)^2) 
 var special_fruit_chance = 3
