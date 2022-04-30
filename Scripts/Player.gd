@@ -51,8 +51,6 @@ func _physics_process(delta):
 		$AnimatedSprite.play()
 	else:
 		$AnimatedSprite.stop()
-
-	# position.x = clamp(position.x, 0, screen_size.x)
 	
 	# flips the character when it is walking
 	# the rabbit character is symmetric, so the flipping cannot be 
