@@ -116,7 +116,9 @@ position = Vector2( 1696, 64 )
 frames = SubResource( 4 )
 animation = "get_hit"
 
-[node name="Banana" type="Sprite" parent="."]
+[node name="Fruits" type="Sprite" parent="."]
+
+[node name="Banana" type="Sprite" parent="Fruits"]
 position = Vector2( 603, 605 )
 scale = Vector2( 3.75, 3.25 )
 texture = ExtResource( 4 )
@@ -124,7 +126,7 @@ hframes = 38
 vframes = 6
 frame = 7
 
-[node name="Cherry" type="Sprite" parent="."]
+[node name="Cherry" type="Sprite" parent="Fruits"]
 position = Vector2( 675, 605 )
 scale = Vector2( 3.75, 3.25 )
 texture = ExtResource( 4 )
@@ -132,7 +134,7 @@ hframes = 38
 vframes = 6
 frame = 15
 
-[node name="Eggplant" type="Sprite" parent="."]
+[node name="Eggplant" type="Sprite" parent="Fruits"]
 position = Vector2( 742, 607 )
 scale = Vector2( 3.75, 3.25 )
 texture = ExtResource( 4 )
@@ -140,7 +142,7 @@ hframes = 38
 vframes = 6
 frame = 25
 
-[node name="Lemon" type="Sprite" parent="."]
+[node name="Lemon" type="Sprite" parent="Fruits"]
 position = Vector2( 958, 606 )
 scale = Vector2( 3.75, 3.25 )
 texture = ExtResource( 4 )
@@ -148,7 +150,7 @@ hframes = 38
 vframes = 6
 frame = 18
 
-[node name="Peach" type="Sprite" parent="."]
+[node name="Peach" type="Sprite" parent="Fruits"]
 position = Vector2( 887, 606 )
 scale = Vector2( 3.75, 3.25 )
 texture = ExtResource( 4 )
@@ -156,7 +158,7 @@ hframes = 38
 vframes = 6
 frame = 12
 
-[node name="DragonFruit" type="Sprite" parent="."]
+[node name="DragonFruit" type="Sprite" parent="Fruits"]
 position = Vector2( 1417, 609 )
 scale = Vector2( 3.75, 3.25 )
 texture = ExtResource( 4 )
@@ -164,7 +166,7 @@ hframes = 38
 vframes = 6
 frame = 21
 
-[node name="Strawberry" type="Sprite" parent="."]
+[node name="Strawberry" type="Sprite" parent="Fruits"]
 position = Vector2( 811, 605 )
 scale = Vector2( 3.75, 3.25 )
 texture = ExtResource( 4 )
