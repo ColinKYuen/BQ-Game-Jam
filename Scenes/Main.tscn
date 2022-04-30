@@ -32,7 +32,7 @@ animations = [ {
 script = ExtResource( 2 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 950, 900 )
+position = Vector2( 960, 900 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Player"]
 position = Vector2( 0, 1 )
