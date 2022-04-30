@@ -41,7 +41,7 @@ func _on_HUD_fruit_hit():
 	if lives > 1:
 		$Life1.set_frame(1)
 	elif lives > 0:
-		$Life2.set_frame(3)
+		$Life2.set_frame(1)
 	else:
-		$Life3.set_frame(3)
+		$Life3.set_frame(1)
 	lives = lives - 1

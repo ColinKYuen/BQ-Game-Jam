@@ -16,7 +16,7 @@ var shape_index:int  = 1
 
 var window_width = OS.get_window_size().x
 var timer = 0
-var score
+var bad_fruit_chance = 5
 
 var is_game_started: bool = false
 
@@ -35,7 +35,7 @@ func _process(delta):
 func spawn(location: float, speed: float, fruit_chance: float):
 	#TODO: fix array index 0 throwing error 
 	var fruit
-	if fruit_chance > 5:
+	if fruit_chance > bad_fruit_chance:
 		shape_index = rnd.randi_range(1,6)
 		fruit = shapes[shape_index].instance()
 	else:
@@ -48,6 +48,11 @@ func spawn(location: float, speed: float, fruit_chance: float):
 	fruit.velocity = Vector2(0, speed)
 	fruit.position = self.position + Vector2(spawn_location, 0)
 	get_parent().add_child(fruit)
+	
+	if fruit_chance > bad_fruit_chance:
+		fruit.connect("fruit_collected", $HUD, "_on_HUD_fruit_collected")
+	else:
+		fruit.connect("fruit_hit", $HUD, "_on_HUD_fruit_hit")
 
 func game_over():
 	$HUD.show_game_over()
