@@ -5,7 +5,6 @@ const obj_bad_fruit = preload("res://Scenes/BadFruit.tscn")
 const base_fruit_speed = 100
 const base_bad_fruit = 5
 
-
 var rng = RandomNumberGenerator.new()
 
 var window_width = OS.get_window_size().x
