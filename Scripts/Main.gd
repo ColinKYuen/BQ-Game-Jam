@@ -30,7 +30,7 @@ func _process(delta):
 		if timer > 1:
 			rng.randomize()
 			timer = 0
-			spawn(rng.randf_range(0, window_width), rng.randf_range(100, 500))
+			spawn(rng.randf_range(0, window_width), rng.randf_range(100, 500), rng.randf_range(1, 100))
 
 func spawn(location: float, speed: float, fruit_chance: float):
 	#TODO: fix array index 0 throwing error 

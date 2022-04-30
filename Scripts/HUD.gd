@@ -2,20 +2,12 @@ extends CanvasLayer
 
 signal start_game
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
 var score = 0;
 var lives = 3;
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-#	get_parent().get_node("GoodFruit").connect("fruit_collected", self, "_on_HUD_fruit_collected")
 	pass
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
 
 func show_message(text):
 	$Message.text = text
