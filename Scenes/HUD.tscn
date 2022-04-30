@@ -68,17 +68,17 @@ wait_time = 2.0
 one_shot = true
 
 [node name="Life1" type="AnimatedSprite" parent="."]
-position = Vector2( 968, 48 )
+position = Vector2( 1792, 64 )
 frames = SubResource( 4 )
 animation = "get_hit"
 
 [node name="Life2" type="AnimatedSprite" parent="."]
-position = Vector2( 920, 48 )
+position = Vector2( 1744, 64 )
 frames = SubResource( 4 )
 animation = "get_hit"
 
 [node name="Life3" type="AnimatedSprite" parent="."]
-position = Vector2( 872, 48 )
+position = Vector2( 1696, 64 )
 frames = SubResource( 4 )
 animation = "get_hit"
 
