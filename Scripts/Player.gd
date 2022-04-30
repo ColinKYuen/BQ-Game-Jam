@@ -11,12 +11,12 @@ func _ready():
 func _physics_process(delta):
 	var velocity = Vector2.ZERO # The player's movement vector.
 	
-	if Input.is_action_pressed("move_left"):
-		position.x -= speed * delta
 	if Input.is_action_pressed("move_right"):
+		velocity.x += 3
 		position.x += speed * delta
-	
-	position.x = clamp(position.x, 0, screen_size.x)
+	if Input.is_action_pressed("move_left"):
+		velocity.x -= 3
+		position.x -= speed * delta
 	
 	if velocity.length() > 0:
 		velocity = velocity.normalized() * speed
