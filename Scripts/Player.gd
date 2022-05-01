@@ -111,3 +111,5 @@ func check_dash(delta):
 			dash_timer = 0
 			speed = norm_speed
 			dash_on_cooldown = true
+	else:
+		speed = norm_speed
