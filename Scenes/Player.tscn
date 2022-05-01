@@ -1,7 +1,7 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=1]
-[ext_resource path="res://art/Basic Charakter Spritesheet.png" type="Texture" id=2]
+[ext_resource path="res://art/sprites.png" type="Texture" id=2]
 [ext_resource path="res://Sounds/music/Retro Beat.ogg" type="AudioStream" id=3]
 [ext_resource path="res://Sounds/sounds/jump1.ogg" type="AudioStream" id=4]
 [ext_resource path="res://Sounds/sounds/error_007.ogg" type="AudioStream" id=5]
@@ -22,11 +22,29 @@ region = Rect2( 96, 0, 48, 48 )
 atlas = ExtResource( 2 )
 region = Rect2( 144, 0, 48, 48 )
 
+[sub_resource type="AtlasTexture" id=11]
+atlas = ExtResource( 2 )
+region = Rect2( 192, 48, 48, 48 )
+
+[sub_resource type="AtlasTexture" id=10]
+atlas = ExtResource( 2 )
+region = Rect2( 192, 0, 48, 48 )
+
 [sub_resource type="SpriteFrames" id=6]
 animations = [ {
 "frames": [ SubResource( 7 ), SubResource( 8 ), SubResource( 9 ) ],
 "loop": true,
 "name": "walk",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 11 ) ],
+"loop": false,
+"name": "collect",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 10 ) ],
+"loop": false,
+"name": "hit",
 "speed": 5.0
 } ]
 
