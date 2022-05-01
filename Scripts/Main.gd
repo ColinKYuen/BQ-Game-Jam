@@ -30,8 +30,8 @@ func new_game():
 func _process(delta):
 	if is_game_started:
 		spawn_timer += delta
+		$Player.norm_speed = 300 + ($HUD.score * 10)
 		if spawn_timer > base_spawn_delay / ((100 + $HUD.score) * 0.01):
-			$Player.speed = 300 + ($HUD.score * 10)
 			rng.randomize()
 			spawn_timer = 0
 			spawn(rng.randf_range(0, window_width), rng.randf_range(base_fruit_speed + ($HUD.score * 10), base_fruit_speed + ($HUD.score * 20)), rng.randf_range(0, 100))

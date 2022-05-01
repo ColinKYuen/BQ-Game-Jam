@@ -30,37 +30,35 @@ func _physics_process(delta):
 		$AnimatedSprite.stop()
 		return
 
-	var velocity = Vector2.ZERO # The player's movement vector.
 	check_dash(delta)
-
-	if is_dashing:
+	var velocity : Vector2 = Vector2(0, 0)
+	
+	if is_dashing: # Force to continue dashing in same direction
 		if last_tap_right:
-			position.x += speed * delta
-			
+			velocity.x += speed
 		else:
-			position.x -= speed * delta
+			velocity.x -= speed
 	else:
 		if Input.is_action_pressed("move_right"):
-			position.x += speed * delta
-			velocity.x += 3
+			velocity.x += speed
 		if Input.is_action_pressed("move_left"):
-			position.x -= speed * delta
-			velocity.x -= 3
-	if velocity.length() > 0:
-		velocity = velocity.normalized() * speed
-		$AnimatedSprite.play()
-	else:
-		$AnimatedSprite.set_frame(0)
-		$AnimatedSprite.stop()
+			velocity.x -= speed
 	
 	# flips the character when it is walking
 	# the rabbit character is symmetric, so the flipping cannot be 
 	# detected by eye, but if we decide to have another character
 	# that is not symmetric, the flipping should be more obvious. 
 	if velocity.x != 0:
+		$AnimatedSprite.play()
 		$AnimatedSprite.animation = "walk"
 		$AnimatedSprite.flip_v = false
 		$AnimatedSprite.flip_h = velocity.x < 0
+	else:
+		$AnimatedSprite.set_frame(0)
+		$AnimatedSprite.stop()
+	
+	print(velocity.x)
+	move_and_slide(velocity, Vector2.UP)
 	
 	var player_width = get_node("Hitbox").get_shape().get_extents().x
 	var max_right = window_width - player_width
@@ -111,3 +109,5 @@ func check_dash(delta):
 			dash_timer = 0
 			speed = norm_speed
 			dash_on_cooldown = true
+	else:
+		speed = norm_speed
