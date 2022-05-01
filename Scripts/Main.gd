@@ -43,7 +43,7 @@ func spawn(location: float, speed: float, fruit_chance: float):
 	# logic: if fruit_chance <= special_fruit_chance,
 	# then produce special fruit
 		spawn_fruit = obj_special_fruit.instance()
-		spawn_fruit.set_special_fruit();
+		spawn_fruit.set_special_fruit(true);
 	elif fruit_chance > bad_fruit_chance:
 	# logic: if fruit_chance > bad_fruit_chance,
 	# then produce normal fruit
@@ -54,7 +54,9 @@ func spawn(location: float, speed: float, fruit_chance: float):
 	# logic: if fruit_chance <= bad_fruit_chance,
 	# then produce bad fruit
 		spawn_fruit = obj_bad_fruit.instance()
-		spawn_fruit.set_bad_fruit()
+		spawn_fruit.set_bad_fruit(false)
+		if $HUD.score > 10:
+			spawn_fruit.set_homing(true)
 
 	var fruit_size = spawn_fruit.get_node("Hitbox").get_viewport_rect().size.x
 	var spawn_location = min(max(fruit_size, location), (window_width - fruit_size))

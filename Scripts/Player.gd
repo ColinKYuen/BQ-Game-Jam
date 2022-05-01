@@ -67,7 +67,6 @@ func _physics_process(delta):
 		$AnimatedSprite.set_frame(0)
 		$AnimatedSprite.stop()
 	
-	print(velocity.x)
 	move_and_slide(velocity, Vector2.UP)
 	
 	var player_width = get_node("Hitbox").get_shape().get_extents().x
