@@ -2,25 +2,28 @@ extends KinematicBody2D
 
 var window_width = OS.get_window_size().x
 
+const jump_height : int = 300
+const gravity : int = 250
 
+var velocity : Vector2 = Vector2()
 var speed : int = 300
 var lives : int = 3
 var screen_size
 
-const dash_double_tap_within: float = 0.85
-const dash_duration: float = 0.3
-const dash_speed_mult: int = 3
-var norm_speed: int = 300
-var is_dashing: bool = false
-var dash_timer: float = 0
-var dash_taps: int = 0
-var dash_cooldown: float = 2
-var dash_on_cooldown: bool = false
+const dash_double_tap_within : float = 0.85
+const dash_duration : float = 0.3
+const dash_speed_mult : int = 3
+var norm_speed : int = 300
+var is_dashing : bool = false
+var dash_timer : float = 0
+var dash_taps : int = 0
+var dash_cooldown : float = 2
+var dash_on_cooldown : bool = false
 var dash_cd_bar
 var last_tap_right: bool = false
 var animation_time = 0
 
-var is_game_started: bool = false
+var is_game_started : bool = false
 
 func _ready():
 	screen_size = get_viewport_rect().size
@@ -36,7 +39,7 @@ func _physics_process(delta):
 		return
 
 	check_dash(delta)
-	var velocity : Vector2 = Vector2(0, 0)
+	velocity.x = 0
 	
 	if is_dashing: # Force to continue dashing in same direction
 		if last_tap_right:
@@ -45,15 +48,10 @@ func _physics_process(delta):
 			velocity.x -= speed
 	else:
 		if Input.is_action_pressed("move_right"):
-		
-			position.x += speed * delta
-			velocity.x += 3
+			velocity.x += speed
 		if Input.is_action_pressed("move_left"):
-			
-			position.x -= speed * delta
-			velocity.x -= 3
+			velocity.x -= speed
 	if velocity.length() > 0:
-		velocity = velocity.normalized() * speed
 		$AnimatedSprite.play()
 	else:
 		$AnimatedSprite.set_frame(0)
@@ -75,6 +73,15 @@ func _physics_process(delta):
 	
 	move_and_slide(velocity, Vector2.UP)
 	
+	# Gravity
+	if not is_on_floor():
+		velocity.y += gravity * delta
+	else:
+		velocity.y = 0
+	if Input.is_action_pressed("move_up") and is_on_floor():
+		print("Jump")
+		velocity.y -= jump_height
+
 	var player_width = get_node("Hitbox").get_shape().get_extents().x
 	var max_right = window_width - player_width
 	
