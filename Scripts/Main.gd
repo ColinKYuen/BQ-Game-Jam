@@ -22,6 +22,8 @@ var is_game_started: bool = false
 var fruit_container
 
 func new_game():
+	$BackgroundMusicStart.stop()
+	$BackgroundMusic.play()
 	is_game_started = true
 	fruit_container = Node2D.new()
 	fruit_container.name = "fruit_container"
@@ -29,6 +31,8 @@ func new_game():
 
 func _process(delta):
 	if is_game_started:
+
+
 		spawn_timer += delta
 		$Player.norm_speed = 300 + ($HUD.score * 10)
 		if spawn_timer > base_spawn_delay / ((100 + $HUD.score) * 0.01):
@@ -82,6 +86,11 @@ func spawn(location: float, speed: float, fruit_chance: float):
 		spawn_fruit.connect("fruit_hit", $Player, "_on_Player_fruit_hit")
 		
 func game_over():
+	$BackgroundMusic.stop()
+	$GameOver.stream.loop = false
+	$GameOver.play()
+	
+	$BackgroundMusicStart.play()
 	is_game_started = false
 	$Player.is_game_started = false
 	$Player.position.x = window_width / 2

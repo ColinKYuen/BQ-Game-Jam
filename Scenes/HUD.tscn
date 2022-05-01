@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://fonts/Xolonium-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Scripts/HUD.gd" type="Script" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://Sounds/sounds/error_007.ogg" type="AudioStream" id=5]
 [ext_resource path="res://Sounds/sounds/powerUp2.ogg" type="AudioStream" id=6]
 [ext_resource path="res://Sounds/sounds/confirmation_001.ogg" type="AudioStream" id=7]
+[ext_resource path="res://Sounds/sounds/Game Over Sound Effect (1).mp3" type="AudioStream" id=8]
 
 [sub_resource type="DynamicFont" id=1]
 size = 64
@@ -159,7 +160,7 @@ vframes = 6
 frame = 15
 
 [node name="Eggplant" type="Sprite" parent="Fruits"]
-position = Vector2( 451, 603 )
+position = Vector2( 975, 599 )
 scale = Vector2( 3.75, 3.25 )
 texture = ExtResource( 4 )
 hframes = 38
@@ -199,7 +200,7 @@ vframes = 6
 frame = 27
 
 [node name="Avocado" type="Sprite" parent="Fruits"]
-position = Vector2( 1046, 602 )
+position = Vector2( 464, 602 )
 scale = Vector2( 3.75, 3.25 )
 texture = ExtResource( 4 )
 hframes = 38
@@ -216,6 +217,10 @@ stream = ExtResource( 7 )
 [node name="HitSpecialFruit" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 6 )
 volume_db = 10.0
+
+[node name="GameOver" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 8 )
+volume_db = -15.0
 
 [connection signal="pressed" from="StartButton" to="." method="_on_StartButton_pressed"]
 [connection signal="timeout" from="MessageTimer" to="." method="_on_MessageTimer_timeout"]
