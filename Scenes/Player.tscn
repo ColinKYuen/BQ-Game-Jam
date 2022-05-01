@@ -1,7 +1,11 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://Sprout Lands - Sprites - Basic pack/Characters/Basic Charakter Spritesheet.png" type="Texture" id=2]
+[ext_resource path="res://Sounds/music/Retro Beat.ogg" type="AudioStream" id=3]
+[ext_resource path="res://Sounds/sounds/jump1.ogg" type="AudioStream" id=4]
+[ext_resource path="res://Sounds/sounds/error_007.ogg" type="AudioStream" id=5]
+[ext_resource path="res://Sounds/sounds/powerUp2.ogg" type="AudioStream" id=6]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 7.5, 9.5625 )
@@ -42,3 +46,19 @@ position = Vector2( 0, 1 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 6 )
 animation = "walk"
+
+[node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+volume_db = -13.0
+autoplay = true
+
+[node name="DashSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+volume_db = -19.429
+
+[node name="HitBadFruit" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+
+[node name="HitGoodFruit" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+volume_db = -15.0

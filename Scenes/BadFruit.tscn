@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Scripts/Fruit.gd" type="Script" id=1]
 [ext_resource path="res://art/Fruit+.png" type="Texture" id=2]
+[ext_resource path="res://Sounds/sounds/error_007.ogg" type="AudioStream" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 30.5, 29.5 )
@@ -19,3 +20,7 @@ texture = ExtResource( 2 )
 hframes = 38
 vframes = 6
 frame = 21
+
+[node name="HitBadFruit" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+volume_db = -11.762
