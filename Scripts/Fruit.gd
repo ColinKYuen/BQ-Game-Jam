@@ -27,6 +27,12 @@ func _physics_process(delta):
 		queue_free()
 
 func _on_body_entered(body):
+	if body.is_in_group("Floor"):
+		# TODO - Add animation for fruit
+		print("Fruit hit the floor")
+		queue_free()
+		return
+	
 	if body.is_in_group("Player"):
 		if is_special_fruit:
 			print("Special fruit collected")
