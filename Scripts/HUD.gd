@@ -84,15 +84,17 @@ func _on_HUD_fruit_collected():
 		highscore = score
 
 func _on_HUD_fruit_hit():
-	$HitBadFruit.stream.loop = false
-	$HitBadFruit.play()
 	lives -= 1
 	print("current lives: " + str(lives))
 	match (lives):
 		2:
 			$Life1.set_frame(1)
+			$HitBadFruit.stream.loop = false
+			$HitBadFruit.play()
 		1:
 			$Life2.set_frame(1)
+			$HitBadFruit.stream.loop = false
+			$HitBadFruit.play()
 		_:
 			# Gameover
 			$Life3.set_frame(1)
