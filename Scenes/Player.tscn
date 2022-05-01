@@ -1,7 +1,7 @@
 [gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=1]
-[ext_resource path="res://Sprout Lands - Sprites - Basic pack/Characters/Basic Charakter Spritesheet.png" type="Texture" id=2]
+[ext_resource path="res://art/Basic Charakter Spritesheet.png" type="Texture" id=2]
 [ext_resource path="res://Sounds/music/Retro Beat.ogg" type="AudioStream" id=3]
 [ext_resource path="res://Sounds/sounds/jump1.ogg" type="AudioStream" id=4]
 [ext_resource path="res://Sounds/sounds/error_007.ogg" type="AudioStream" id=5]
@@ -10,24 +10,21 @@
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 7.5, 9.5625 )
 
-[sub_resource type="AtlasTexture" id=5]
-flags = 4
+[sub_resource type="AtlasTexture" id=7]
 atlas = ExtResource( 2 )
 region = Rect2( 0, 0, 48, 48 )
 
-[sub_resource type="AtlasTexture" id=2]
-flags = 4
+[sub_resource type="AtlasTexture" id=8]
 atlas = ExtResource( 2 )
 region = Rect2( 96, 0, 48, 48 )
 
-[sub_resource type="AtlasTexture" id=3]
-flags = 4
+[sub_resource type="AtlasTexture" id=9]
 atlas = ExtResource( 2 )
 region = Rect2( 144, 0, 48, 48 )
 
 [sub_resource type="SpriteFrames" id=6]
 animations = [ {
-"frames": [ SubResource( 5 ), SubResource( 2 ), SubResource( 3 ) ],
+"frames": [ SubResource( 7 ), SubResource( 8 ), SubResource( 9 ) ],
 "loop": true,
 "name": "walk",
 "speed": 5.0

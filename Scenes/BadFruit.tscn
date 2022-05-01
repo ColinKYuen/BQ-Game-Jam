@@ -5,7 +5,7 @@
 [ext_resource path="res://Sounds/sounds/error_007.ogg" type="AudioStream" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 30.5, 29.5 )
+extents = Vector2( 6, 24 )
 
 [node name="BadFruit" type="Area2D"]
 scale = Vector2( 4, 1 )
