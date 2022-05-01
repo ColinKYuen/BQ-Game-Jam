@@ -81,7 +81,7 @@ func _physics_process(delta):
 		print("Jump")
 		velocity.y -= jump_height
 
-	var player_width = get_node("Hitbox").get_shape().get_extents().x
+	var player_width = get_node("Hitbox").get_shape().get_extents().x * self.scale.x
 	var max_right = window_width - player_width
 	
 	if position.x > max_right:

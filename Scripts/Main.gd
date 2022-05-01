@@ -60,7 +60,7 @@ func spawn(location: float, speed: float, fruit_chance: float):
 		if $HUD.score > 10:
 			spawn_fruit.set_homing(true)
 
-	var fruit_size = spawn_fruit.get_node("Hitbox").get_viewport_rect().size.x
+	var fruit_size = spawn_fruit.get_node("Hitbox").get_viewport_rect().size.x * spawn_fruit.scale.x
 	var spawn_location = min(max(fruit_size, location), (window_width - fruit_size))
 	
 	spawn_fruit.velocity = Vector2(0, speed)
