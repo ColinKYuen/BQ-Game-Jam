@@ -22,11 +22,13 @@ var last_tap_right: bool = false
 var is_game_started: bool = false
 
 func _ready():
+	
 	screen_size = get_viewport_rect().size
 	dash_cd_bar = get_parent().get_node("HUD").get_node("DashCooldownBar")
 
 func new_game():
 	is_game_started = true
+	$AnimatedSprite.animation = "walk"
 
 func _physics_process(delta):
 	if not is_game_started:
@@ -70,6 +72,10 @@ func _physics_process(delta):
 		$AnimatedSprite.set_frame(0)
 		$AnimatedSprite.stop()
 	
+<<<<<<< HEAD
+=======
+#	print(velocity.x)
+>>>>>>> ade0340 (Add animations for collected fruit and getting hit)
 	move_and_slide(velocity, Vector2.UP)
 	
 	var player_width = get_node("Hitbox").get_shape().get_extents().x
@@ -127,3 +133,9 @@ func check_dash(delta):
 			dash_on_cooldown = true
 	else:
 		speed = norm_speed
+
+func _on_Player_fruit_hit():
+	$AnimatedSprite.animation = "hit"
+
+func _on_Player_fruit_collected():
+	$AnimatedSprite.animation = "collect"

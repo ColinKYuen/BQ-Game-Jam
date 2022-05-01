@@ -69,14 +69,17 @@ func spawn(location: float, speed: float, fruit_chance: float):
 	# logic: if fruit_chance <= special_fruit_chance,
 	# then produce special fruit
 		spawn_fruit.connect("special_fruit", $HUD, "_on_HUD_special_fruit")
+		spawn_fruit.connect("special_fruit", $Player, "_on_Player_fruit_collected")
 	elif fruit_chance > bad_fruit_chance:
 	# logic: if fruit_chance > bad_fruit_chance,
 	# then produce normal fruit
 		spawn_fruit.connect("fruit_collected", $HUD, "_on_HUD_fruit_collected")
+		spawn_fruit.connect("fruit_collected", $Player, "_on_Player_fruit_collected")
 	else:
 	# logic: if fruit_chance <= bad_fruit_chance,
 	# then produce bad fruit
 		spawn_fruit.connect("fruit_hit", $HUD, "_on_HUD_fruit_hit")
+		spawn_fruit.connect("fruit_hit", $Player, "_on_Player_fruit_hit")
 		
 func game_over():
 	is_game_started = false
