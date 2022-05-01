@@ -191,14 +191,14 @@ frame = 189
 
 [node name="HitBadFruit" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 5 )
-volume_db = -11.762
+volume_db = -12.0
 
 [node name="HitGoodFruit" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 7 )
 
 [node name="HitSpecialFruit" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 6 )
-volume_db = -15.0
+volume_db = 10.0
 
 [connection signal="pressed" from="StartButton" to="." method="_on_StartButton_pressed"]
 [connection signal="timeout" from="MessageTimer" to="." method="_on_MessageTimer_timeout"]

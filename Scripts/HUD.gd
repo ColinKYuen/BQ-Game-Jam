@@ -6,6 +6,7 @@ signal end_game
 var highscore:int = 0
 var score:int = 0
 var lives:int = 3
+var collected_special:bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -67,14 +68,18 @@ func _on_HUD_special_fruit():
 			$Life1.set_frame(0)
 		2:
 			$Life2.set_frame(0)
+	collected_special = true
 	_on_HUD_fruit_collected()
 
 func _on_HUD_fruit_collected():
-	$HitGoodFruit.stream.loop = false
-	$HitGoodFruit.play()
-	print("current score: " + str(int($Score.text) + 1))
-	$Score.text = str(int($Score.text) + 1)
-	score = int($Score.text) + 1
+	if collected_special:
+		collected_special = false
+	else:
+		$HitGoodFruit.stream.loop = false
+		$HitGoodFruit.play()
+	score += 1
+	$Score.text = str(score)
+	print("current score: " + str(score))	
 	if score > highscore:
 		highscore = score
 
