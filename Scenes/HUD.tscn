@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://fonts/Xolonium-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Scripts/HUD.gd" type="Script" id=2]
@@ -46,6 +46,9 @@ animations = [ {
 "name": "get_hit",
 "speed": 5.0
 } ]
+
+[sub_resource type="StyleBoxFlat" id=6]
+bg_color = Color( 0.117647, 0.54902, 0.666667, 1 )
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource( 2 )
@@ -133,6 +136,7 @@ margin_left = -186.92
 margin_top = -20.48
 margin_right = 187.08
 margin_bottom = 19.52
+custom_styles/fg = SubResource( 6 )
 value = 100.0
 percent_visible = false
 

@@ -82,7 +82,7 @@ func _physics_process(delta):
 		
 func check_dash(delta):
 	if dash_on_cooldown:
-		dash_cd_bar.value = (dash_timer / dash_cooldown) * 100
+		dash_cd_bar.value = ((dash_timer / dash_cooldown) * 100) + 1
 		dash_timer += delta
 		if dash_timer <= dash_cooldown:
 			return
