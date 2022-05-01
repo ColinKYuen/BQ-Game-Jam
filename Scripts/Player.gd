@@ -40,9 +40,19 @@ func _physics_process(delta):
 			velocity.x -= speed
 	else:
 		if Input.is_action_pressed("move_right"):
-			velocity.x += speed
+		
+			position.x += speed * delta
+			velocity.x += 3
 		if Input.is_action_pressed("move_left"):
-			velocity.x -= speed
+			
+			position.x -= speed * delta
+			velocity.x -= 3
+	if velocity.length() > 0:
+		velocity = velocity.normalized() * speed
+		$AnimatedSprite.play()
+	else:
+		$AnimatedSprite.set_frame(0)
+		$AnimatedSprite.stop()
 	
 	# flips the character when it is walking
 	# the rabbit character is symmetric, so the flipping cannot be 
@@ -103,6 +113,8 @@ func check_dash(delta):
 		speed = norm_speed * dash_speed_mult
 
 	if is_dashing:
+		$DashSound.stream.loop = false
+		$DashSound.play()
 		dash_timer += delta
 		if dash_timer >= dash_duration:
 			is_dashing = false

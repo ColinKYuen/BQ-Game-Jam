@@ -29,6 +29,7 @@ func _on_body_entered(body):
 			pass
 		else:
 			print("Got hit by fruit")
+			
 			emit_signal("fruit_hit")
 			pass
 	queue_free()

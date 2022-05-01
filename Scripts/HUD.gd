@@ -58,6 +58,8 @@ func _on_MessageTimer_timeout():
 
 func _on_HUD_special_fruit():
 	# logic: special fruit also gives scores that a normal fruit would
+	$HitSpecialFruit.stream.loop = false
+	$HitSpecialFruit.play()
 	lives = min(3, lives + 1)
 	print("current lives: " + str(lives))
 	match (lives):
@@ -68,6 +70,8 @@ func _on_HUD_special_fruit():
 	_on_HUD_fruit_collected()
 
 func _on_HUD_fruit_collected():
+	$HitGoodFruit.stream.loop = false
+	$HitGoodFruit.play()
 	print("current score: " + str(int($Score.text) + 1))
 	$Score.text = str(int($Score.text) + 1)
 	score = int($Score.text) + 1
@@ -75,6 +79,8 @@ func _on_HUD_fruit_collected():
 		highscore = score
 
 func _on_HUD_fruit_hit():
+	$HitBadFruit.stream.loop = false
+	$HitBadFruit.play()
 	lives -= 1
 	print("current lives: " + str(lives))
 	match (lives):
