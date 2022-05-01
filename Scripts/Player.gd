@@ -22,7 +22,6 @@ var last_tap_right: bool = false
 var is_game_started: bool = false
 
 func _ready():
-	
 	screen_size = get_viewport_rect().size
 	dash_cd_bar = get_parent().get_node("HUD").get_node("DashCooldownBar")
 
