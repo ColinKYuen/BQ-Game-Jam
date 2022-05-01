@@ -2,6 +2,7 @@ extends KinematicBody2D
 
 var window_width = OS.get_window_size().x
 
+
 var speed : int = 300
 var lives : int = 3
 var screen_size
@@ -15,12 +16,14 @@ var dash_timer: float = 0
 var dash_taps: int = 0
 var dash_cooldown: float = 2
 var dash_on_cooldown: bool = false
+var dash_cd_bar
 var last_tap_right: bool = false
 
 var is_game_started: bool = false
 
 func _ready():
 	screen_size = get_viewport_rect().size
+	dash_cd_bar = get_parent().get_node("HUD").get_node("DashCooldownBar")
 
 func new_game():
 	is_game_started = true
@@ -67,7 +70,6 @@ func _physics_process(delta):
 		$AnimatedSprite.set_frame(0)
 		$AnimatedSprite.stop()
 	
-	print(velocity.x)
 	move_and_slide(velocity, Vector2.UP)
 	
 	var player_width = get_node("Hitbox").get_shape().get_extents().x
@@ -80,6 +82,7 @@ func _physics_process(delta):
 		
 func check_dash(delta):
 	if dash_on_cooldown:
+		dash_cd_bar.value = (dash_timer / dash_cooldown) * 100
 		dash_timer += delta
 		if dash_timer <= dash_cooldown:
 			return
@@ -108,6 +111,7 @@ func check_dash(delta):
 
 	if dash_taps >= 2 and not is_dashing:
 		is_dashing = true
+		dash_cd_bar.value = 0
 		dash_timer = 0
 		dash_taps = 0
 		speed = norm_speed * dash_speed_mult

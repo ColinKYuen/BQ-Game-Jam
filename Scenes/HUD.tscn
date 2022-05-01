@@ -107,19 +107,34 @@ wait_time = 2.0
 one_shot = true
 
 [node name="Life1" type="AnimatedSprite" parent="."]
-position = Vector2( 1792, 64 )
+position = Vector2( 324, 64 )
+scale = Vector2( 4, 4 )
 frames = SubResource( 4 )
 animation = "get_hit"
 
 [node name="Life2" type="AnimatedSprite" parent="."]
-position = Vector2( 1744, 64 )
+position = Vector2( 194, 64 )
+scale = Vector2( 4, 4 )
 frames = SubResource( 4 )
 animation = "get_hit"
 
 [node name="Life3" type="AnimatedSprite" parent="."]
-position = Vector2( 1696, 64 )
+position = Vector2( 64, 64 )
+scale = Vector2( 4, 4 )
 frames = SubResource( 4 )
 animation = "get_hit"
+
+[node name="DashCooldownBar" type="ProgressBar" parent="."]
+anchor_left = 0.101
+anchor_top = 0.131
+anchor_right = 0.101
+anchor_bottom = 0.131
+margin_left = -186.92
+margin_top = -20.48
+margin_right = 187.08
+margin_bottom = 19.52
+value = 100.0
+percent_visible = false
 
 [node name="Fruits" type="Sprite" parent="."]
 
