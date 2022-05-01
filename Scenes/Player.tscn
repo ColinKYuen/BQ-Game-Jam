@@ -38,12 +38,12 @@ animations = [ {
 "speed": 5.0
 }, {
 "frames": [ SubResource( 11 ) ],
-"loop": true,
+"loop": false,
 "name": "collect",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 10 ) ],
-"loop": true,
+"loop": false,
 "name": "hit",
 "speed": 5.0
 } ]

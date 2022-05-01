@@ -18,6 +18,7 @@ var dash_cooldown: float = 2
 var dash_on_cooldown: bool = false
 var dash_cd_bar
 var last_tap_right: bool = false
+var animation_time = 0
 
 var is_game_started: bool = false
 
@@ -63,18 +64,15 @@ func _physics_process(delta):
 	# detected by eye, but if we decide to have another character
 	# that is not symmetric, the flipping should be more obvious. 
 	if velocity.x != 0:
-		$AnimatedSprite.play()
-		$AnimatedSprite.animation = "walk"
+		if OS.get_unix_time() - animation_time > 0.005:
+			$AnimatedSprite.play()
+			$AnimatedSprite.animation = "walk"
 		$AnimatedSprite.flip_v = false
 		$AnimatedSprite.flip_h = velocity.x < 0
 	else:
 		$AnimatedSprite.set_frame(0)
 		$AnimatedSprite.stop()
 	
-<<<<<<< HEAD
-=======
-#	print(velocity.x)
->>>>>>> ade0340 (Add animations for collected fruit and getting hit)
 	move_and_slide(velocity, Vector2.UP)
 	
 	var player_width = get_node("Hitbox").get_shape().get_extents().x
@@ -134,7 +132,9 @@ func check_dash(delta):
 		speed = norm_speed
 
 func _on_Player_fruit_hit():
-	$AnimatedSprite.animation = "hit"
+	$AnimatedSprite.play("hit")
+	animation_time = OS.get_unix_time()
 
 func _on_Player_fruit_collected():
-	$AnimatedSprite.animation = "collect"
+	$AnimatedSprite.play("collect")
+	animation_time = OS.get_unix_time()
