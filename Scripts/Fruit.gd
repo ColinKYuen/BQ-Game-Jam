@@ -20,7 +20,7 @@ func _physics_process(delta):
 	var speed = velocity.length()
 	if is_homing and life_time * 100 < speed:
 		target = (player.position - self.position).normalized() * speed
-		target.y = abs(target.y) # Force to only fall downwards
+		target.y = abs(target.y) + (speed / 3) # Force to only fall downwards & fall faster
 	position += target * delta
 	life_time += delta
 	if life_time >= max_duration:
