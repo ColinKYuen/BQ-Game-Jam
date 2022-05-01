@@ -2,6 +2,7 @@ extends CanvasLayer
 
 signal start_game
 signal end_game
+signal increment_special_fruit_chance
 
 var highscore:int = 0
 var score:int = 0
@@ -85,6 +86,8 @@ func _on_HUD_fruit_collected():
 
 func _on_HUD_fruit_hit():
 	lives -= 1
+	print("increase special fruit spawn chance")
+	emit_signal("increment_special_fruit_chance")
 	print("current lives: " + str(lives))
 	match (lives):
 		2:

@@ -11,8 +11,6 @@ var rng = RandomNumberGenerator.new()
 var window_width = OS.get_window_size().x
 var timer:float = 0
 var bad_fruit_chance:int = 5
-# TODO make special fruit chance higher depending on player.lives
-# i.e., something like: special_fruit_chance = max(1, (3 - lives)^2) 
 var special_fruit_chance = 3
 var num_good_fruits:int = 6
 var spawn_timer:float = 0.0
@@ -84,7 +82,10 @@ func spawn(location: float, speed: float, fruit_chance: float):
 	# then produce bad fruit
 		spawn_fruit.connect("fruit_hit", $HUD, "_on_HUD_fruit_hit")
 		spawn_fruit.connect("fruit_hit", $Player, "_on_Player_fruit_hit")
-		
+
+func increment_special_fruit_chance():
+	special_fruit_chance += 1
+
 func game_over():
 	$BackgroundMusic.stop()
 	$GameOver.stream.loop = false
