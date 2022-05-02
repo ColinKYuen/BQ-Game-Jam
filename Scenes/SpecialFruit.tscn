@@ -18,7 +18,7 @@ shape = SubResource( 1 )
 texture = ExtResource( 2 )
 hframes = 38
 vframes = 6
-frame = 189
+frame = 25
 
 [node name="HitSpecialFruit" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 3 )

@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://fonts/Xolonium-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Scripts/HUD.gd" type="Script" id=2]
@@ -31,6 +31,10 @@ func _ready():
 #func _process(delta):
 #	pass
 "
+
+[sub_resource type="DynamicFont" id=7]
+size = 30
+font_data = ExtResource( 1 )
 
 [sub_resource type="AtlasTexture" id=2]
 atlas = ExtResource( 3 )
@@ -96,10 +100,25 @@ align = 1
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-margin_top = -100.0
+margin_top = -236.0
+margin_bottom = -148.0
 custom_colors/font_color = Color( 0.458824, 0.301961, 0.564706, 1 )
 custom_fonts/font = SubResource( 1 )
-text = "Collect Good Fruits and Special Fruit, Dodge Bad Fruits"
+text = "Collect Good Fruits and Special Fruits, Dodge Bad Fruits"
+align = 1
+autowrap = true
+
+[node name="Instructions" type="Label" parent="."]
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = 360.0
+margin_top = -20.0
+margin_right = -368.0
+margin_bottom = 97.0
+custom_colors/font_color = Color( 0.458824, 0.301961, 0.564706, 1 )
+custom_fonts/font = SubResource( 7 )
+text = "Use the arrow keys to run or jump. Double tap left or right to dash. The top left bar indicates your dash cooldown. Collect as many fruits as you can and try not to get hit by a bad fruit! Special fruits will restore one life."
 align = 1
 autowrap = true
 
@@ -141,7 +160,7 @@ percent_visible = false
 [node name="Fruits" type="Sprite" parent="."]
 
 [node name="Banana" type="Sprite" parent="Fruits"]
-position = Vector2( 326, 549 )
+position = Vector2( 312, 433 )
 scale = Vector2( 3.75, 3.25 )
 texture = ExtResource( 4 )
 hframes = 38
@@ -149,7 +168,7 @@ vframes = 6
 frame = 7
 
 [node name="Cherry" type="Sprite" parent="Fruits"]
-position = Vector2( 390, 549 )
+position = Vector2( 384, 433 )
 scale = Vector2( 3.75, 3.25 )
 texture = ExtResource( 4 )
 hframes = 38
@@ -157,7 +176,7 @@ vframes = 6
 frame = 15
 
 [node name="Eggplant" type="Sprite" parent="Fruits"]
-position = Vector2( 1072, 552 )
+position = Vector2( 1072, 432 )
 scale = Vector2( 3.75, 3.25 )
 texture = ExtResource( 4 )
 hframes = 38
@@ -165,7 +184,7 @@ vframes = 6
 frame = 25
 
 [node name="Lemon" type="Sprite" parent="Fruits"]
-position = Vector2( 646, 549 )
+position = Vector2( 672, 432 )
 scale = Vector2( 3.75, 3.25 )
 texture = ExtResource( 4 )
 hframes = 38
@@ -173,7 +192,7 @@ vframes = 6
 frame = 18
 
 [node name="Peach" type="Sprite" parent="Fruits"]
-position = Vector2( 582, 549 )
+position = Vector2( 596, 434 )
 scale = Vector2( 3.75, 3.25 )
 texture = ExtResource( 4 )
 hframes = 38
@@ -181,7 +200,7 @@ vframes = 6
 frame = 12
 
 [node name="Strawberry" type="Sprite" parent="Fruits"]
-position = Vector2( 512, 552 )
+position = Vector2( 512, 432 )
 scale = Vector2( 3.75, 3.25 )
 texture = ExtResource( 4 )
 hframes = 38
@@ -189,7 +208,7 @@ vframes = 6
 frame = 27
 
 [node name="Avocado" type="Sprite" parent="Fruits"]
-position = Vector2( 448, 552 )
+position = Vector2( 446, 434 )
 scale = Vector2( 3.75, 3.25 )
 texture = ExtResource( 4 )
 hframes = 38
@@ -197,7 +216,7 @@ vframes = 6
 frame = 189
 
 [node name="DragonFruit" type="Sprite" parent="Fruits"]
-position = Vector2( 1696, 552 )
+position = Vector2( 1696, 432 )
 scale = Vector2( 3.75, 3.25 )
 texture = ExtResource( 4 )
 hframes = 38

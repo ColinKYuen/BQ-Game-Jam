@@ -36,6 +36,7 @@ func show_game_over():
 	$Message.text = "GAME OVER"
 	$Message.show()
 	$StartButton.show()
+	$Instructions.show()	
 
 func reset_HUD():
 	score = 0
@@ -53,6 +54,7 @@ func _on_StartButton_pressed():
 	$Highscore.hide()
 	$Score.show()
 	$Fruits.hide()
+	$Instructions.hide()
 	emit_signal("start_game")
 
 func _on_MessageTimer_timeout():
