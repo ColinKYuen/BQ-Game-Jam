@@ -10,7 +10,7 @@ Collect the good fruits to earn scores, and avoid the bad fruits.
 - Lemon
 - Peach
 
-**Special Fruit** give you an extra live!
+**Special Fruit** gives you an extra live!
 - Eggplant
 
 **Extra Special Fruits** give you extra points!
@@ -23,3 +23,4 @@ https://ninjikin.itch.io/fruit
 https://cupnooble.itch.io/sprout-lands-asset-pack
 https://s4m-ur4i.itch.io/pixelart-clouds-background
 https://www.youtube.com/watch?v=NN_8vfN0HP4 
+https://www.youtube.com/watch?v=DFWrMNMg_FA
