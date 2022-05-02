@@ -107,7 +107,6 @@ stream = ExtResource( 7 )
 volume_db = -15.0
 autoplay = true
 
-[connection signal="increment_special_fruit_chance" from="HUD" to="." method="increment_special_fruit_spawn_chance"]
 [connection signal="start_game" from="HUD" to="." method="new_game"]
 [connection signal="start_game" from="HUD" to="HUD" method="_on_HUD_start_game"]
 [connection signal="start_game" from="HUD" to="Player" method="new_game"]
