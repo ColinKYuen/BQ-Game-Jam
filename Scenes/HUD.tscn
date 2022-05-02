@@ -49,13 +49,7 @@ animations = [ {
 } ]
 
 [sub_resource type="StyleBoxFlat" id=6]
-bg_color = Color( 0.117647, 0.293505, 0.666667, 1 )
-border_width_left = 8
-border_width_top = 8
-border_width_right = 8
-border_width_bottom = 8
-border_color = Color( 0, 0, 0, 1 )
-border_blend = true
+bg_color = Color( 0.117647, 0.54902, 0.666667, 1 )
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource( 2 )
@@ -65,10 +59,10 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-margin_left = -90.0
-margin_top = -180.0
-margin_right = 90.0
-margin_bottom = -96.0
+margin_left = -88.0
+margin_top = -392.0
+margin_right = 92.0
+margin_bottom = -308.0
 custom_colors/font_color = Color( 0.607843, 0.45098, 0.717647, 1 )
 custom_fonts/font = SubResource( 1 )
 text = "Start"
@@ -163,7 +157,7 @@ vframes = 6
 frame = 15
 
 [node name="Eggplant" type="Sprite" parent="Fruits"]
-position = Vector2( 975, 599 )
+position = Vector2( 1072, 552 )
 scale = Vector2( 3.75, 3.25 )
 texture = ExtResource( 4 )
 hframes = 38
@@ -187,7 +181,7 @@ vframes = 6
 frame = 12
 
 [node name="Strawberry" type="Sprite" parent="Fruits"]
-position = Vector2( 518, 549 )
+position = Vector2( 512, 552 )
 scale = Vector2( 3.75, 3.25 )
 texture = ExtResource( 4 )
 hframes = 38
@@ -195,7 +189,7 @@ vframes = 6
 frame = 27
 
 [node name="Avocado" type="Sprite" parent="Fruits"]
-position = Vector2( 464, 602 )
+position = Vector2( 448, 552 )
 scale = Vector2( 3.75, 3.25 )
 texture = ExtResource( 4 )
 hframes = 38
