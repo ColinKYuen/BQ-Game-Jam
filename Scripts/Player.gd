@@ -119,6 +119,8 @@ func check_dash(delta):
 			dash_taps = 0
 
 	if dash_taps >= 2 and not is_dashing:
+		$DashSound.stream.loop = false
+		$DashSound.play()
 		is_dashing = true
 		dash_cd_bar.value = 0
 		dash_timer = 0
@@ -126,8 +128,6 @@ func check_dash(delta):
 		speed = norm_speed * dash_speed_mult
 
 	if is_dashing:
-		$DashSound.stream.loop = false
-		$DashSound.play()
 		dash_timer += delta
 		if dash_timer >= dash_duration:
 			is_dashing = false
