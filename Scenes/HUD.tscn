@@ -184,7 +184,7 @@ vframes = 6
 frame = 25
 
 [node name="Lemon" type="Sprite" parent="Fruits"]
-position = Vector2( 667, 434 )
+position = Vector2( 672, 432 )
 scale = Vector2( 3.75, 3.25 )
 texture = ExtResource( 4 )
 hframes = 38
