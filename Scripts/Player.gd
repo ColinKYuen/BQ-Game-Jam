@@ -7,7 +7,6 @@ const gravity : int = 250
 
 var velocity : Vector2 = Vector2()
 var speed : int = 300
-var lives : int = 3
 var screen_size
 
 const dash_double_tap_within : float = 0.85
