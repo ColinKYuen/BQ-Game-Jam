@@ -29,8 +29,6 @@ func new_game():
 
 func _process(delta):
 	if is_game_started:
-
-
 		spawn_timer += delta
 		$Player.norm_speed = 300 + ($HUD.score * 10)
 		if spawn_timer > base_spawn_delay / ((100 + $HUD.score) * 0.01):
@@ -83,7 +81,7 @@ func spawn(location: float, speed: float, fruit_chance: float):
 		spawn_fruit.connect("fruit_hit", $HUD, "_on_HUD_fruit_hit")
 		spawn_fruit.connect("fruit_hit", $Player, "_on_Player_fruit_hit")
 
-func increment_special_fruit_chance():
+func increment_special_fruit_spawn_chance():
 	special_fruit_chance += 1
 
 func game_over():
